@@ -1,7 +1,22 @@
 Dataset generation for Adaptive Curricular Sequence
 ===================================================
 
-This repository contains the codes required to generate learning object datasets for the adaptive curriculum sequencing problem. Some datasets and some evolutionary computation algorithms have been included to perform comparative tests.
+This repository contains the codes required to generate learning object datasets for the adaptive curriculum sequencing problem. Some datasets and some evolutionary computation algorithms have been included to perform comparative tests. The code and data are related to the following paper:
+
+_Martins, A. F., Machado, M., Bernardino, H. S., & de Souza, J. F. (2021). [A comparative analysis of metaheuristics applied to adaptive curriculum sequencing](https://link.springer.com/article/10.1007/s00500-021-05836-9). Soft Computing, 1-16._ 
+
+If you use this code and data or would like to refer to it, please cite the paper mentioned above. You can also use the following BibTex information for citation: 
+
+```
+@article{martins2021comparative,
+  title={A comparative analysis of metaheuristics applied to adaptive curriculum sequencing},
+  author={Martins, Andr{\'e} Ferreira and Machado, Marcelo and Bernardino, Heder Soares and de Souza, Jairo Francisco},
+  journal={Soft Computing},
+  pages={1--16},
+  year={2021},
+  publisher={Springer}
+}
+```
 
 This project was organized with the following structure:
 
