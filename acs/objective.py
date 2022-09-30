@@ -2,6 +2,8 @@ import warnings
 
 import numpy as np
 
+from utils.timer import Timer
+
 
 INVALID_VALUE = 1000
 
@@ -224,7 +226,31 @@ def fitness_population(population, instance, student, timer, print_results=False
 
     return survival_values
 
-def multi_fitness(individual, instance, student, timer, print_results=False, data=None, num_objectives=5, **kwargs):
+
+def reduce_objectives(objective, num_objectives):
+    if num_objectives == 1:
+        objective = (objective[0] + objective[1] + objective[2] + objective[3] + objective[4],)
+    if num_objectives == 2:
+        objective = (objective[4],
+                     objective[0] + objective[1] + objective[2] + objective[3])
+    if num_objectives == 3:
+        objective = (objective[1],
+                     objective[4],
+                     objective[0] + objective[2] + objective[3])
+    if num_objectives == 4:
+        objective = (objective[1],
+                     objective[3],
+                     objective[4],
+                     objective[0] + objective[2])
+    # if num_objectives == 5:
+    #     pass
+
+    return objective
+
+
+def multi_fitness(individual, instance, student, timer=None, print_results=False, data=None, num_objectives=None, **kwargs):
+    if timer is None:
+        timer = Timer()
     concepts_covered_objective = concepts_covered_function(individual, instance, student, timer)
     difficulty_objective = difficulty_function(individual, instance, student, timer)
     total_time_objective = total_time_function(individual, instance, student)
@@ -237,22 +263,8 @@ def multi_fitness(individual, instance, student, timer, print_results=False, dat
                  instance.materials_balancing_weight * materials_balancing_objective,
                  instance.learning_style_weight * learning_style_objective)
 
-    if num_objectives == 1:
-        objective = (objective[0] + objective[1] + objective[2] + objective[3] + objective[4],)
-    if num_objectives == 2:
-        objective = (objective[0],
-                     objective[1] + objective[2] + objective[3] + objective[4])
-    if num_objectives == 3:
-        objective = (objective[0],
-                     objective[1],
-                     objective[2] + objective[3] + objective[4])
-    if num_objectives == 4:
-        objective = (objective[0],
-                     objective[1],
-                     objective[4],
-                     objective[2] + objective[3])
-    # if num_objectives == 5:
-    #     pass
+    if num_objectives is not None:
+        objective = reduce_objectives(objective, num_objectives)
 
     if data is not None:
         data.append(objective)
