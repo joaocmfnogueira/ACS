@@ -7,7 +7,6 @@ from acs.objective import multi_fitness, reduce_objectives
 from utils.timer import Timer
 from read.consts import MAX_OBJECTIVES
 
-dir = os.path.dirname(__file__)
 
 def create_results_name_list(instances, algorithms_single, algorithms_multi, num_objectives_list):
     instances_results_name = {}
@@ -36,7 +35,7 @@ def get_results_name(algorithm, instance, num_objectives=None):
     return name
 
 
-def open_results(name, base_folder=os.path.join(dir,'..', 'results','acs_algorithm_results')):
+def open_results(name, base_folder='results/algorithm_results'):
     file_path = os.path.join(base_folder, name)
 
     with open(file_path, 'rb') as file:

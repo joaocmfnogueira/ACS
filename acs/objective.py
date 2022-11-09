@@ -7,7 +7,7 @@ from utils.timer import Timer
 
 INVALID_VALUE = 1000
 
-def concepts_covered_function(individual, instance, student, timer=Timer()):
+def concepts_covered_function(individual, instance, student, timer):
     objectives = instance.objectives[student]
     concepts_materials = instance.concepts_materials
     missing_concepts_coeficient = instance.missing_concepts_coeficient
@@ -34,7 +34,7 @@ def concepts_covered_function(individual, instance, student, timer=Timer()):
     return result
 
 
-def difficulty_function(individual, instance, student, timer=Timer()):
+def difficulty_function(individual, instance, student, timer):
     timer.add_time()
     objectives = instance.objectives[student]
     student_abilities = instance.student_abilities[student]
