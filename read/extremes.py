@@ -1,5 +1,6 @@
 import os
 import pickle
+from joblib import dump,load
 
 
 def create_extremes_name_list(instances, num_objectives_list):
@@ -8,14 +9,14 @@ def create_extremes_name_list(instances, num_objectives_list):
     return extremes_name
 
 def get_extremes_name(instance, num_objectives):
-    name = '%s_%s.pickle' % (instance, num_objectives)
+    name = '%s_%s.joblib' % (instance, num_objectives)
     return name
 
 def open_extremes(name, base_folder='results/extremes'):
     file_path = os.path.join(base_folder, name)
 
     with open(file_path, 'rb') as file:
-        file_results = pickle.load(file)
+        file_results = load(file)
 
     return file_results
 

@@ -1,6 +1,6 @@
 import os
 import pickle
-
+from joblib import dump,load
 import numpy as np
 
 from acs.objective import multi_fitness, reduce_objectives
@@ -28,9 +28,9 @@ def create_results_name_list(instances, algorithms_single, algorithms_multi, num
 
 def get_results_name(algorithm, instance, num_objectives=None):
     if num_objectives is None:
-        name = '%s_%s.pickle' % (algorithm, instance)
+        name = '%s_%s.joblib' % (algorithm, instance)
     else:
-        name = '%s_%d_%s.pickle' % (algorithm, num_objectives, instance)
+        name = '%s_%d_%s.joblib' % (algorithm, num_objectives, instance)
 
     return name
 
@@ -39,7 +39,7 @@ def open_results(name, base_folder='results/algorithm_results'):
     file_path = os.path.join(base_folder, name)
 
     with open(file_path, 'rb') as file:
-        file_results = pickle.load(file)
+        file_results = load(file)
 
     return file_results
 

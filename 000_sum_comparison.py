@@ -1,6 +1,6 @@
 import pickle
 from pprint import pprint
-
+from joblib import dump,load
 import numpy as np
 
 
@@ -13,15 +13,15 @@ import numpy as np
 ################################################################################
 
 # (repetitions, students, iterations)
-with open('results/algorithm_results/nsga_2_real.pickle', 'rb') as file:
-    file_results_nsga = pickle.load(file)
+with open('nsga_ii.joblib', 'rb') as file:
+    file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
     results_nsga = file_results_nsga['data'][2]
 
 # (repetitions, students, iterations, objectives)
-with open('results/algorithm_results/ga_real.pickle', 'rb') as file:
-    file_results_ga = pickle.load(file)
+with open('ga.joblib', 'rb') as file:
+    file_results_ga = load(file)
     instance_ga = file_results_ga['info']['instance']
     results_ga = file_results_ga['data'][2]
 

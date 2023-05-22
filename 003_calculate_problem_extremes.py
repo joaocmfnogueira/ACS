@@ -2,7 +2,7 @@ import datetime
 import os
 import pickle
 import sys
-
+from joblib import dump,load
 from read.algorithm import create_results_name_list
 from process.extremes import get_instances_extremes
 
@@ -21,7 +21,7 @@ extremes_dict = get_instances_extremes(results_name_list)
 
 extremes_path = 'results/extremes'
 for ((instance_name, num_objectives), extremes) in extremes_dict.items():
-    extremes_file = os.path.join(extremes_path, "%s_%d.pickle" % (instance_name, num_objectives))
+    extremes_file = os.path.join(extremes_path, "%s_%d.joblib" % (instance_name, num_objectives))
     results = {
         'info': {
             'command': os.path.basename(sys.argv[0]) + " " + " ".join(sys.argv[1:]),
@@ -37,4 +37,4 @@ for ((instance_name, num_objectives), extremes) in extremes_dict.items():
     }
 
     with open(extremes_file, 'wb') as file:
-        pickle.dump(results, file)
+        dump(results, file)

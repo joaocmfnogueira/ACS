@@ -1,6 +1,6 @@
 import pickle
 from pprint import pprint
-
+from joblib import dump,load
 import numpy as np
 
 from acs.objective import multi_fitness
