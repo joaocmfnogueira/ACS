@@ -4,7 +4,7 @@ import os
 import pickle
 import random
 import sys
-
+from joblib import dump,load;
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -43,7 +43,7 @@ def create_base_parser(parser):
     parser.add_argument('-i', '--num-iterations', type=int)
     parser.add_argument('--show', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
-    parser.add_argument('-n', '--results-name', default='results/comparison.pickle')
+    parser.add_argument('-n', '--results-name', default='results/comparison.joblib')
 
 
 if __name__ == '__main__':
@@ -178,7 +178,7 @@ if __name__ == '__main__':
 
     os.makedirs(os.path.dirname(args.results_name), exist_ok=True)
     with open(args.results_name, 'wb') as file:
-        pickle.dump(results, file)
+         dump(results, file)
 
     # mean_best_fitness = np.mean(results[2], axis=(0, 1))
     # mean_partial_fitness = np.mean(results[3], axis=(0, 1))
