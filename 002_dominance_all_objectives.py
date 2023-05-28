@@ -18,7 +18,7 @@ from read.consts import MAX_OBJECTIVES
 ################################################################################
 
 # (repetitions, students, individuals, materials)
-with open('results/nsga_2_copy.joblib', 'rb') as file:
+with open('results/nsga_3_copy.joblib', 'rb') as file:
     file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
