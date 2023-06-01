@@ -19,7 +19,7 @@ num_objectives_list = [2, 3]
 results_name_list = create_results_name_list(instances, algorithms_single, algorithms_multi, num_objectives_list)
 extremes_dict = get_instances_extremes(results_name_list)
 
-extremes_path = 'results/extremes'
+extremes_path = '/mnt/DataStorage/joaovitor/extremes'
 for ((instance_name, num_objectives), extremes) in extremes_dict.items():
     extremes_file = os.path.join(extremes_path, "%s_%d.joblib" % (instance_name, num_objectives))
     results = {

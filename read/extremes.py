@@ -12,7 +12,7 @@ def get_extremes_name(instance, num_objectives):
     name = '%s_%s.joblib' % (instance, num_objectives)
     return name
 
-def open_extremes(name, base_folder='results/extremes'):
+def open_extremes(name, base_folder='/mnt/DataStorage/joaovitor/extremes'):
     file_path = os.path.join(base_folder, name)
 
     with open(file_path, 'rb') as file:

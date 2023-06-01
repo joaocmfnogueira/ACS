@@ -35,7 +35,7 @@ def get_results_name(algorithm, instance, num_objectives=None):
     return name
 
 
-def open_results(name, base_folder='results/algorithm_results'):
+def open_results(name, base_folder='/mnt/DataStorage/joaovitor'):
     file_path = os.path.join(base_folder, name)
 
     with open(file_path, 'rb') as file:

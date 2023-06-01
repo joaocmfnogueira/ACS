@@ -23,7 +23,7 @@ colors = {
 }
 
 file_format = 'png'
-results_path = 'results/2020-09-17 - Frente de pareto'
+results_path = '/mnt/DataStorage/joaovitor/2020-09-17 - Frente de pareto'
 
 instances = ['andre_50', 'andre_300', 'andre_1000', 'real']
 comparison_num_objectives = [2, 3, 5]
