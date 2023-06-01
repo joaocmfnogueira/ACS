@@ -13,7 +13,7 @@ import numpy as np
 ################################################################################
 
 # (repetitions, students, iterations)
-with open('results/nsga_2_andre_50.joblib', 'rb') as file:
+with open('results/nsga_3_andre_50.joblib', 'rb') as file:
     file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
