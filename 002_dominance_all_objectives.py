@@ -26,7 +26,7 @@ with open('results/nsga_3_andre_50.joblib', 'rb') as file:
 
 # (repetitions, students, materials)
 # # (repetitions, students, iterations, objectives)
-with open('results/ga_andre_50.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/ga_andre_50.joblib', 'rb') as file:
     file_results_ga = load(file)
     instance_ga = file_results_ga['info']['instance']
     selected_ga = file_results_ga['data'][0]
