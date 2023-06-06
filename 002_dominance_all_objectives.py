@@ -18,7 +18,7 @@ from read.consts import MAX_OBJECTIVES
 ################################################################################
 
 # (repetitions, students, individuals, materials)
-with open('/mnt/DataStorage/joaovitor/nsga_3_andre_50.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/nsga_ii_2_andre_300.joblib', 'rb') as file:
     file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
@@ -26,7 +26,7 @@ with open('/mnt/DataStorage/joaovitor/nsga_3_andre_50.joblib', 'rb') as file:
 
 # (repetitions, students, materials)
 # # (repetitions, students, iterations, objectives)
-with open('/mnt/DataStorage/joaovitor/ga_andre_50.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/ga_andre_300.joblib', 'rb') as file:
     file_results_ga = load(file)
     instance_ga = file_results_ga['info']['instance']
     selected_ga = file_results_ga['data'][0]
