@@ -16,7 +16,7 @@ from utils.multiobjective import dominates, sort_nondominated
 ################################################################################
 
 # (repetitions, students, iterations, individuals, objectives)
-with open('/mnt/DataStorage/joaovitor/nsga_ii_2_andre_300.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/nsga_ii_3_andre_300.joblib', 'rb') as file:
     file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
