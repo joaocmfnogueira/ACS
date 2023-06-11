@@ -13,14 +13,14 @@ import numpy as np
 ################################################################################
 
 # (repetitions, students, iterations)
-with open('/mnt/DataStorage/joaovitor/nsga_ii_3_andre_300.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/nsga_ii_2_andre_1000.joblib', 'rb') as file:
     file_results_nsga = load(file)
     instance_nsga = file_results_nsga['info']['instance']
     instance_size = instance_nsga.num_materials
     results_nsga = file_results_nsga['data'][2]
 
 # (repetitions, students, iterations, objectives)
-with open('/mnt/DataStorage/joaovitor/ga_andre_300.joblib', 'rb') as file:
+with open('/mnt/DataStorage/joaovitor/ga_andre_1000.joblib', 'rb') as file:
     file_results_ga = load(file)
     instance_ga = file_results_ga['info']['instance']
     results_ga = file_results_ga['data'][2]
