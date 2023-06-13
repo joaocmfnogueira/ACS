@@ -56,3 +56,32 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.6/dist-packages/PIL/Image.py", line 2237, in save
     fp = builtins.open(filename, "w+b")
 FileNotFoundError: [Errno 2] No such file or directory: 'results/frente_pareto/andre_50/2 objectives/ga/0.png'
+Reading data
+============
+
+Comparing GA with NSGA-II using two objetives
+=============================================
+
+andre_50
+---------
+
+('ga', 'andre_50', None)
+('nsga_ii', 'andre_50', 2)
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 139, in <module>
+    scatter.save(filepath)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/core/plot.py", line 184, in save
+    self.fig.savefig(fname, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/matplotlib/figure.py", line 2311, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/matplotlib/backend_bases.py", line 2217, in print_figure
+    **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/matplotlib/backend_bases.py", line 1639, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/matplotlib/backends/backend_agg.py", line 512, in print_png
+    dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/matplotlib/image.py", line 1611, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/PIL/Image.py", line 2237, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: 'results/frente_pareto/andre_50/2 objectives/nsga_ii_2/0.png'
