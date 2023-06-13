@@ -82,7 +82,7 @@ for (instance_name, algorithm_results) in instances_results.items():
             problem_worst_point = worst_point[(instance_name, n)][i]
             pareto_front = nondominated_population[(instance_name, n)][i]
 
-            gd = get_performance_indicator("gd", pareto_front)
+            # gd = get_performance_indicator("gd", pareto_front)
 
             filepath = os.path.join(results_path, instance_name, '%d objectives' % n, '%d.%s' % (i, file_format))
 
