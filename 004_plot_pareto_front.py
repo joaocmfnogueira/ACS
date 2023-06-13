@@ -23,7 +23,7 @@ colors = {
 }
 
 file_format = 'png'
-results_path = '/mnt/DataStorage/joaovitor/frente_pareto'
+results_path = 'results/frente_pareto'
 
 instances = ['andre_50', 'andre_300', 'andre_1000', 'real']
 comparison_num_objectives = [2, 3, 5]
