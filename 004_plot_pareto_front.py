@@ -87,17 +87,17 @@ for (instance_name, algorithm_results) in instances_results.items():
             filepath = os.path.join(results_path, instance_name, '%d objectives' % n, '%d.%s' % (i, file_format))
 
             legend = True if n <= 3 else False
-            # scatter = Scatter(legend=legend)
-            # scatter.add(pareto_front, label='Pareto-front', s=60, color=colors['pareto'])
+            scatter = Scatter(legend=legend)
+            scatter.add(pareto_front, label='Pareto-front', s=60, color=colors['pareto'])
 
             size = 30
             for algorithm_name in algorithm_results.keys():
                 problem_best_population = np.apply_along_axis(reduce_objectives, 1, algorithm_results[algorithm_name][i], n)
-                # scatter.add(problem_best_population, label=algorithm_name, s=size, color=colors[algorithm_name])
+                scatter.add(problem_best_population, label=algorithm_name, s=size, color=colors[algorithm_name])
                 size /= 2
 
-            # scatter.add(problem_worst_point, label="Worst", s=100, color=colors['worst'])
-            # scatter.save(filepath)
+            scatter.add(problem_worst_point, label="Worst", s=100, color=colors['worst'])
+            scatter.save(filepath)
 
 
 
