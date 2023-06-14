@@ -131,7 +131,7 @@ for (instance_name, algorithm_results) in instances_results.items():
 
                 metricas_resultado.append(aux)
 
-with open('GFG', 'w') as f:
+with open('GFG', 'rw') as f:
       
     # using csv.writer method from CSV package
     write = csv.writer(f)
