@@ -7,7 +7,7 @@ import csv
 from pymoo.factory import get_problem
 from pymoo.visualization.scatter import Scatter
 from pymoo.indicators.igd import IGD
-from pymoo.indicators.hv import HV
+from pymoo.indicators.hv import Hypervolume
 
 
 from acs.objective import reduce_objectives
@@ -124,7 +124,7 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(i)
                 aux.append(algorithm_name)
                 
-                ind = HV(ref_point=worst_point)
+                ind = Hypervolume(ref_point=worst_point)
                 aux.append(ind(problem_best_population))
 
                 ind2 = IGD(pareto_front)
