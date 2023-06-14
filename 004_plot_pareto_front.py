@@ -125,10 +125,12 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(algorithm_name)
                 
                 ind = Hypervolume(ref_point=worst_point)
-                aux.append(ind(problem_best_population))
+                hv_value = ind._do(problem_best_population)
+                aux.append(hv_value)
 
                 ind2 = IGD(pareto_front)
-                aux.append(ind2(problem_best_population))
+                igd_value = ind2._do(problem_best_population)
+                aux.append(igd_value)
 
                 metricas_resultado.append(aux)
 
