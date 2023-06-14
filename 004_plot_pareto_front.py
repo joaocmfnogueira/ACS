@@ -6,8 +6,9 @@ import csv
 
 from pymoo.factory import get_problem
 from pymoo.visualization.scatter import Scatter
-from pymoo.indicators.igd import IGD
-from pymoo.indicators.hv import HV
+
+from pymoo.performance_indicator.hv import Hypervolume
+from pymoo.performance_indicator.igd import IGD
 
 from acs.objective import reduce_objectives
 from read.algorithm import create_results_name_list, get_results_name, open_results, get_results_best_all_objectives, get_results_best_n_objectives
@@ -122,12 +123,14 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(n)
                 aux.append(i)
                 aux.append(algorithm_name)
-                
-                ind = HV(ref_point=worst_point)
-                aux.append(ind(problem_best_population))
 
-                ind2 = IGD(pareto_front)
-                aux.append(ind2(problem_best_population))
+                hv = Hypervolume(ref_point=worst_point)
+                hv_value = hv.calculate(problem_best_population)
+                aux.append(hv_value)
+
+                igd = IGD(pf=pareto_front)
+                igd_value = igd.calculate(problem_best_population)
+                aux.append(igd_value)
 
                 metricas_resultado.append(aux)
 
