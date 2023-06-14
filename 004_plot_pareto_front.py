@@ -2,9 +2,12 @@ import os
 from pprint import pprint
 from joblib import dump,load
 import numpy as np
+import csv
 
 from pymoo.factory import get_problem
 from pymoo.visualization.scatter import Scatter
+from pymoo.indicators.igd import IGD
+from pymoo.indicators.hv import HV
 
 from acs.objective import reduce_objectives
 from read.algorithm import create_results_name_list, get_results_name, open_results, get_results_best_all_objectives, get_results_best_n_objectives
@@ -99,45 +102,92 @@ for (instance_name, results_name_list) in instances_results_name.items():
 #             scatter.add(problem_worst_point, label="Worst", s=100, color=colors['worst'])
 #             scatter.save(filepath)
 
-
-
-
-print('Comparing GA with NSGA-II using two objetives')
-print('=============================================\n')
-instances_results_name = create_results_name_list(instances, ['ga'], ['nsga_ii'], [2, 3])
-for (instance_name, results_name_list) in instances_results_name.items():
+print('Generating metrics')
+print('=================\n')
+cabecalho = ["Instance", "Num.Objectives", "Student", "Algorithm", "Hypervolume", "IGD"]
+metricas_resultado = []
+for (instance_name, algorithm_results) in instances_results.items():
     print(instance_name)
     print('---------\n')
-    for results_name_info in results_name_list:
-        print(results_name_info)
-        results_name = get_results_name(*results_name_info)
-        results = open_results(results_name)
-
-        algorithm_name = results_name_info[0]
-        num_objectives = results_name_info[2]
-
-        # (repetitions, students, individuals, num_objectives)
-        best_population = get_results_best_n_objectives(results, 2)
-        num_students = best_population.shape[1]
-
+    for n in comparison_num_objectives:
+        print('%d objectives' % n)
+        num_students = len(algorithm_results['ga'])
         for i in range(num_students):
-            problem_best_population = best_population[:, i, :, :]
-            problem_best_population = problem_best_population.reshape(problem_best_population.shape[0] * problem_best_population.shape[1], problem_best_population.shape[2])
+            problem_worst_point = worst_point[(instance_name, n)][i]
+            pareto_front = nondominated_population[(instance_name, n)][i]
+            for algorithm_name in algorithm_results.keys():
+                problem_best_population = np.apply_along_axis(reduce_objectives, 1, algorithm_results[algorithm_name][i], n)
+                aux = []
+                aux.append(instance_name)
+                aux.append(n)
+                aux.append(i)
+                aux.append(algorithm_name)
+                
+                ind = HV(ref_point=worst_point)
+                aux.append(ind(problem_best_population))
 
-            pareto_front = nondominated_population[(instance_name, 2)][i]
-            problem_worst_point = worst_point[(instance_name, 2)][i]
+                ind2 = IGD(pareto_front)
+                aux.append(ind2(problem_best_population))
 
-            if num_objectives is None:
-                filepath = os.path.join(results_path, instance_name, '2 objectives', algorithm_name, '%d.%s' % (i, file_format))
-            else:
-                filepath = os.path.join(results_path, instance_name, '2 objectives', '%s_%d' % (algorithm_name, num_objectives), '%d.%s' % (i, file_format))
+                metricas_resultado.append(aux)
 
-            scatter = Scatter(legend=True)
-            scatter.add(pareto_front, label="Pareto-front")
-            scatter.add(problem_best_population, label="Result", s=8)
-            scatter.add(problem_worst_point, label="Worst", s=100)
-            scatter.save(filepath)
-    print('')
+with open('GFG', 'w') as f:
+      
+    # using csv.writer method from CSV package
+    write = csv.writer(f)
+      
+    write.writerow(cabecalho)
+    write.writerows(metricas_resultado)
+
+
+
+
+            
+
+            
+            
+
+            
+
+
+
+
+# print('Comparing GA with NSGA-II using two objetives')
+# print('=============================================\n')
+# instances_results_name = create_results_name_list(instances, ['ga'], ['nsga_ii'], [2, 3])
+# for (instance_name, results_name_list) in instances_results_name.items():
+#     print(instance_name)
+#     print('---------\n')
+#     for results_name_info in results_name_list:
+#         print(results_name_info)
+#         results_name = get_results_name(*results_name_info)
+#         results = open_results(results_name)
+
+#         algorithm_name = results_name_info[0]
+#         num_objectives = results_name_info[2]
+
+#         # (repetitions, students, individuals, num_objectives)
+#         best_population = get_results_best_n_objectives(results, 2)
+#         num_students = best_population.shape[1]
+
+#         for i in range(num_students):
+#             problem_best_population = best_population[:, i, :, :]
+#             problem_best_population = problem_best_population.reshape(problem_best_population.shape[0] * problem_best_population.shape[1], problem_best_population.shape[2])
+
+#             pareto_front = nondominated_population[(instance_name, 2)][i]
+#             problem_worst_point = worst_point[(instance_name, 2)][i]
+
+#             if num_objectives is None:
+#                 filepath = os.path.join(results_path, instance_name, '2 objectives', algorithm_name, '%d.%s' % (i, file_format))
+#             else:
+#                 filepath = os.path.join(results_path, instance_name, '2 objectives', '%s_%d' % (algorithm_name, num_objectives), '%d.%s' % (i, file_format))
+
+#             scatter = Scatter(legend=True)
+#             scatter.add(pareto_front, label="Pareto-front")
+#             scatter.add(problem_best_population, label="Result", s=8)
+#             scatter.add(problem_worst_point, label="Worst", s=100)
+#             scatter.save(filepath)
+#     print('')
 
 # assert(False)
 #
