@@ -103,3 +103,7 @@ Traceback (most recent call last):
   File "/home/joaovitor/projetoACS/evolutionary-ACS-benchmark/read/algorithm.py", line 141, in get_results_best_n_objectives
     population[i, j, k] = multi_fitness(results_selected[i, j, k], results_instance, j, timer)
 ValueError: cannot copy sequence with size 5 to array axis with dimension 2
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 10, in <module>
+    from pymoo.indicators.hv import HV
+ImportError: cannot import name 'HV'
