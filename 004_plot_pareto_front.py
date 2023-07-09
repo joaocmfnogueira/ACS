@@ -6,8 +6,10 @@ import csv
 
 from pymoo.factory import get_problem
 from pymoo.visualization.scatter import Scatter
-from pymoo.indicators.igd import IGD
-from pymoo.indicators.hv import Hypervolume
+# from pymoo.indicators.igd import IGD
+# from pymoo.indicators.hv import Hypervolume
+from pymoo.factory import get_performance_indicator
+from pymoo.factory import get_performance_indicator
 
 
 from acs.objective import reduce_objectives
@@ -123,13 +125,19 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(n)
                 aux.append(i)
                 aux.append(algorithm_name)
+
+                hv = get_performance_indicator("hv", ref_point=worst_point)
+                hv_value = hv.do(problem_best_population)
                 
-                ind = Hypervolume(ref_point=worst_point)
-                hv_value = ind._do(problem_best_population)
+                # ind = Hypervolume(ref_point=worst_point)
+                # hv_value = ind._do(problem_best_population)
                 aux.append(hv_value)
 
-                ind2 = IGD(pareto_front)
-                igd_value = ind2._do(problem_best_population)
+                igd = get_performance_indicator("igd", pareto_front)
+                igd_value = igd.do(problem_best_population)
+                
+                # ind = IGD(pareto_front)
+                # igd_value = ind._do(problem_best_population)
                 aux.append(igd_value)
 
                 metricas_resultado.append(aux)
@@ -141,18 +149,6 @@ with open('GFG', 'rw') as f:
       
     write.writerow(cabecalho)
     write.writerows(metricas_resultado)
-
-
-
-
-            
-
-            
-            
-
-            
-
-
 
 
 # print('Comparing GA with NSGA-II using two objetives')
