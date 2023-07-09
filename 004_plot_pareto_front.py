@@ -6,8 +6,6 @@ import csv
 
 from pymoo.factory import get_problem
 from pymoo.visualization.scatter import Scatter
-# from pymoo.indicators.igd import IGD
-# from pymoo.indicators.hv import Hypervolume
 from pymoo.factory import get_performance_indicator
 from pymoo.factory import get_performance_indicator
 
@@ -107,7 +105,7 @@ for (instance_name, results_name_list) in instances_results_name.items():
 
 print('Generating metrics')
 print('=================\n')
-cabecalho = ["Instance", "Num.Objectives", "Student", "Algorithm", "Hypervolume", "IGD"]
+cabecalho = ["Instance", "Num.Objectives", "Student", "Algorithm"]
 metricas_resultado = []
 for (instance_name, algorithm_results) in instances_results.items():
     print(instance_name)
@@ -126,19 +124,13 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(i)
                 aux.append(algorithm_name)
 
-                hv = get_performance_indicator("hv", ref_point=worst_point)
-                hv_value = hv.do(problem_best_population)
-                
-                # ind = Hypervolume(ref_point=worst_point)
-                # hv_value = ind._do(problem_best_population)
-                aux.append(hv_value)
+                # hv = get_performance_indicator("hv", ref_point=worst_point)
+                # hv_value = hv.do(problem_best_population)
+                # aux.append(hv_value)
 
-                igd = get_performance_indicator("igd", pareto_front)
-                igd_value = igd.do(problem_best_population)
-                
-                # ind = IGD(pareto_front)
-                # igd_value = ind._do(problem_best_population)
-                aux.append(igd_value)
+                # igd = get_performance_indicator("igd", pareto_front)
+                # igd_value = igd.do(problem_best_population)
+                # aux.append(igd_value)
 
                 metricas_resultado.append(aux)
 
