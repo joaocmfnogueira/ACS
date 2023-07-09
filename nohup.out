@@ -107,3 +107,59 @@ Traceback (most recent call last):
   File "004_plot_pareto_front.py", line 10, in <module>
     from pymoo.indicators.hv import HV
 ImportError: cannot import name 'HV'
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 10, in <module>
+    from pymoo.indicators.hv import HV
+ImportError: cannot import name 'HV'
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 10, in <module>
+    from pymoo.indicators.hv import HV
+ImportError: cannot import name 'HV'
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 10, in <module>
+    from pymoo.performance_indicator.hv import Hypervolume
+ModuleNotFoundError: No module named 'pymoo.performance_indicator'
+Reading data
+============
+
+Generating metrics
+=================
+
+andre_50
+---------
+
+2 objectives
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 130, in <module>
+    hv_value = hv.do(problem_best_population)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/core/indicator.py", line 27, in do
+    return self._do(F, *args, **kwargs)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/indicators/hv.py", line 86, in _do
+    val = hv.compute(F)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/vendor/hv.py", line 56, in compute
+    if weaklyDominates(point, referencePoint):
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/vendor/hv.py", line 47, in weaklyDominates
+    if point[i] > other[i]:
+KeyError: 0
+Reading data
+============
+
+Generating metrics
+=================
+
+andre_50
+---------
+
+2 objectives
+Traceback (most recent call last):
+  File "004_plot_pareto_front.py", line 130, in <module>
+    hv_value = hv.do(problem_best_population)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/core/indicator.py", line 27, in do
+    return self._do(F, *args, **kwargs)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/indicators/hv.py", line 86, in _do
+    val = hv.compute(F)
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/vendor/hv.py", line 56, in compute
+    if weaklyDominates(point, referencePoint):
+  File "/home/joaovitor/.local/lib/python3.6/site-packages/pymoo/vendor/hv.py", line 47, in weaklyDominates
+    if point[i] > other[i]:
+KeyError: 0
