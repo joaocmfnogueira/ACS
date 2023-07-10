@@ -8,10 +8,10 @@ from pymoo.factory import get_performance_indicator
 pf = get_problem("zdt1").pareto_front()
 
 # The result found by an algorithm
-A = pf[::10] * 1.1
+a = pf[::10] * 1.1
 
 igd = get_performance_indicator("igd", pf)
-print("IGD", igd.do(A))
+print("IGD", igd.do(a))
 
 hv = get_performance_indicator("hv", ref_point=np.array([1.2, 1.2]))
-print("hv", hv.do(A))
+print("hv", hv.do(a))
