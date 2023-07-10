@@ -123,6 +123,7 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(n)
                 aux.append(i)
                 aux.append(algorithm_name)
+                print(worst_point, problem_best_population)
 
                 # hv = get_performance_indicator("hv", ref_point=worst_point)
                 # hv_value = hv.do(problem_best_population)
