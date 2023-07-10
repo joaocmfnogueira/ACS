@@ -105,7 +105,7 @@ for (instance_name, results_name_list) in instances_results_name.items():
 
 print('Generating metrics')
 print('=================\n')
-cabecalho = ["Instance", "Num.Objectives", "Student", "Algorithm"]
+cabecalho = ["Instance", "Num.Objectives", "Student", "Algorithm", "Hypervolume", "IGD"]
 metricas_resultado = []
 for (instance_name, algorithm_results) in instances_results.items():
     print(instance_name)
@@ -123,15 +123,15 @@ for (instance_name, algorithm_results) in instances_results.items():
                 aux.append(n)
                 aux.append(i)
                 aux.append(algorithm_name)
-                print(worst_point, problem_best_population)
+                
 
-                # hv = get_performance_indicator("hv", ref_point=worst_point)
-                # hv_value = hv.do(problem_best_population)
-                # aux.append(hv_value)
+                hv = get_performance_indicator("hv", ref_point=problem_worst_point)
+                hv_value = hv.do(problem_best_population)
+                aux.append(hv_value)
 
-                # igd = get_performance_indicator("igd", pareto_front)
-                # igd_value = igd.do(problem_best_population)
-                # aux.append(igd_value)
+                igd = get_performance_indicator("igd", pareto_front)
+                igd_value = igd.do(problem_best_population)
+                aux.append(igd_value)
 
                 metricas_resultado.append(aux)
 
